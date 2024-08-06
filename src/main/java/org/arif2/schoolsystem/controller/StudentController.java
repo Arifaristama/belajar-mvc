@@ -4,9 +4,7 @@ import org.arif2.schoolsystem.model.SchoolClassModel;
 import org.arif2.schoolsystem.model.SchoolHistoryModel;
 import org.arif2.schoolsystem.model.StudentModel;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDate;
@@ -270,5 +268,61 @@ public class StudentController {
         }
 
         return mav;
+    }
+
+    @GetMapping("/add")
+    public ModelAndView add() {
+        ModelAndView mav = new ModelAndView("student/add");
+        StudentModel student = new StudentModel();
+
+        List<SchoolHistoryModel> schoolHistory = new ArrayList<>();
+
+        //SD Class
+        List<SchoolClassModel> sdClass = new ArrayList<>();
+        sdClass.add(new SchoolClassModel(1,"kelas1",null,null,""));
+        sdClass.add(new SchoolClassModel(2,"kelas2",null,null,""));
+        sdClass.add(new SchoolClassModel(3,"kelas3",null,null,""));
+        sdClass.add(new SchoolClassModel(4,"kelas4",null,null,""));
+        sdClass.add(new SchoolClassModel(5,"kelas5",null,null,""));
+        sdClass.add(new SchoolClassModel(6,"kelas6",null,null,""));
+
+        //SD
+        SchoolHistoryModel addHistory = new SchoolHistoryModel(0,"SD","","",sdClass);
+        //Add School History
+        schoolHistory.add(addHistory);
+
+        //SMP
+        List<SchoolClassModel> smpClass = new ArrayList<>();
+        smpClass.add(new SchoolClassModel(1,"Kelas7",null,null,""));
+        smpClass.add(new SchoolClassModel(2,"Kelas8",null,null,""));
+        smpClass.add(new SchoolClassModel(3,"Kelas9",null,null,""));
+
+        //SMP
+        SchoolHistoryModel smpHistory = new SchoolHistoryModel(0, "SMP","","",smpClass);
+        //Add School History
+        schoolHistory.add(smpHistory);
+
+        //SMA Class
+        List<SchoolClassModel> smaClass = new ArrayList<>();
+        smaClass.add(new SchoolClassModel(1,"Kelas10",null,null,""));
+        smaClass.add(new SchoolClassModel(2,"Kelas11",null,null,""));
+        smaClass.add(new SchoolClassModel(3,"Kelas12",null,null,""));
+
+        //SMA
+        SchoolHistoryModel smaHistory = new SchoolHistoryModel(0, "SMA","","",smaClass);
+        //Add School History
+        schoolHistory.add(smaHistory);
+
+        //Add to Student
+        student.setSchoolHistory(schoolHistory);
+
+        mav.addObject("student",student);
+        return mav;
+    }
+
+    @PostMapping("/save")
+    public ModelAndView save(@ModelAttribute("student")StudentModel student) {
+        STUDENT_MODEL.add(student);
+        return new ModelAndView("redirect:/student");
     }
 }
