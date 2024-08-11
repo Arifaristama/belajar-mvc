@@ -1,8 +1,8 @@
-package org.arif2.schoolsystem.controller;
+package org.arif2.schoolsystem.controller.student;
 
-import org.arif2.schoolsystem.model.SchoolClassModel;
-import org.arif2.schoolsystem.model.SchoolHistoryModel;
-import org.arif2.schoolsystem.model.StudentModel;
+import org.arif2.schoolsystem.model.student.SchoolClassModel;
+import org.arif2.schoolsystem.model.student.SchoolHistoryModel;
+import org.arif2.schoolsystem.model.student.StudentModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;

@@ -1,4 +1,4 @@
-package org.arif2.schoolsystem.model;
+package org.arif2.schoolsystem.model.student;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

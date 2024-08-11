@@ -1,4 +1,4 @@
-package org.arif2.schoolsystem.controller;
+package org.arif2.schoolsystem.controller.student;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
