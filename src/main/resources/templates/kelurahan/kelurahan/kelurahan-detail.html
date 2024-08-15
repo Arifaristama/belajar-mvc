@@ -56,7 +56,9 @@
                                         <th scope="row" th:text="${data.id}">1</th>
                                         <td th:text="${data.nama}">Mark</td>
                                         <td>
-                                            <a th:href="@{~/kelurahan/detail/dusun/{id}(id=${data.id})}" class="btn btn-primary">Detail</a>
+                                            <a th:href="@{~/kelurahan2/kelurahan2/{kelurahanId}/dusun/{id}(id=${data.id})}" class="btn btn-primary">
+                                                Detail
+                                            </a>
                                         </td>
                                     <tr/>
                                     </tbody>

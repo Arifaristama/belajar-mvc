@@ -2,14 +2,12 @@ package org.arif2.schoolsystem.controller.kelurahan;
 
 import org.arif2.schoolsystem.model.kelurahan.*;
 
-import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDate;
 import java.util.*;
 
 @Controller
@@ -47,14 +45,6 @@ public class KelurahanController {
         WargaModel aminah = new WargaModel(4,"aminah",114,20,"Perempuan");
         WargaModel subaidah = new WargaModel(5,"subaidah",115,20,"Perempuan");
 
-        warga.add(marina);
-        warga.add(agus);
-        warga.add(paijo);
-        warga.add(aminah);
-        warga.add(subaidah);
-
-        rt1.setWargaModels(warga);
-
         //Detail Kelurahan
         List<DusunModel> sukahuripList = Arrays.asList(ciparakan, cikuya, cigintung);
         kelurahanModel.setDaftarDusun(sukahuripList);
@@ -74,14 +64,17 @@ public class KelurahanController {
         rw3.setRtModels(rw1List);
 
         //Detail RT
-//        WargaModel warga = new
+        warga.add(marina);
+        warga.add(agus);
+        warga.add(paijo);
+        warga.add(aminah);
+        warga.add(subaidah);
 
+        rt1.setWargaModels(warga);
 
         this.kelurahan.add(kelurahanModel);
         this.kelurahan.add(kelurahanModel2);
         this.kelurahan.add(kelurahanModel3);
-
-
 
     }
 
@@ -160,5 +153,15 @@ public class KelurahanController {
             }
         }
         return new ModelAndView("redirect:/kelurahan");
+    }
+
+    @GetMapping("/add")
+    public ModelAndView add() {
+        ModelAndView mv = new ModelAndView("kelurahan/add/add");
+        KelurahanModel lurah = new KelurahanModel();
+
+        List<KelurahanModel> kelurahan = new ArrayList<>();
+
+        return mv;
     }
 }

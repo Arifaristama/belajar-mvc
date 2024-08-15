@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>RW</title>
+    <title>Dusun</title>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <body>
@@ -10,37 +10,33 @@
     <div class="container-fluid">
         <a class="navbar-brand">Informasi</a>
         <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="search" aria-label="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
 </nav>
 <div class="container-fluid">
-    <h1>RW</h1>
+    <h1>Dusun</h1>
     <form>
         <div class="row">
             <div class="col-12">
                 <div class="mb-3">
                     <label for="id" class="form-label">ID</label>
-                    <input type="text" class="form-control" id="id" th:value="${rw.id}" readonly>
+                    <input type="text" class="form-control" id="id" th:value="${dusun2.id}" readonly>
                 </div>
                 <div class="mb-3">
-                    <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" th:value="${rw.nama}" readonly>
-                </div>
-                <div class="mb-3">
-                    <label for="namaRw" class="form-label">Ketua Rw</label>
-                    <input type="text" class="form-control" id="namaRw" th:value="${rw.namaRw}" readonly>
+                    <label for="name" class="form-label">Nama</label>
+                    <input type="text" class="form-control" id="name" th:value="${dusun2.name}">
                 </div>
             </div>
         </div>
         <div>
-            <h3>RT</h3>
+            <h3>RW</h3>
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            Daftar RT
+                            Daftar RW
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -48,17 +44,17 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Nama</th>
-                                    <th scope="col">Ketua RT</th>
+                                    <th scope="col">Ketua RW</th>
                                     <th scope="col">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="rw : ${rw.rtModels}">
-                                    <th scope="row" th:text="${rw.id}">1</th>
-                                    <td th:text="${rw.nama}">Mark</td>
-                                    <td th:text="${rw.namaRt}">Otto</td>
+                                <tr th:each="dataDusun : ${dusun2.daftarRW2}">
+                                    <th scope="row" th:text="${dataDusun.id}">1</th>
+                                    <td th:text="${dataDusun.name}">Mark</td>
+                                    <td th:text="${dataDusun.nameRW}">Otto</td>
                                     <td>
-                                        <a th:href="@{~/kelurahan/detail/dusun/rw/rt/{id}(id=${rw.id})}" class="btn btn-primary">
+                                        <a th:href="@{~/kelurahan2/kelurahan2/detail/{kelurahanId}/dusun/{dusunId}/rw/{rwId}(kelurahanId=${kelurahan.id}, dusunId=${dusun2.id}, rwId=${dataDusun.id})}" class="btn btn-primary">
                                             Detail
                                         </a>
                                     </td>
@@ -72,7 +68,5 @@
         </div>
     </form>
 </div>
-</nav>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
