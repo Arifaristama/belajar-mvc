@@ -20,4 +20,10 @@ public class Kelurahan {
         this.nama = nama;
         this.kecamatan = kecamatan;
     }
+
+    public Kelurahan(Integer id, String nama, List<Dusun> daftarDusun2) {
+        this.id = id;
+        this.nama = nama;
+        this.daftarDusun2 = daftarDusun2;
+    }
 }

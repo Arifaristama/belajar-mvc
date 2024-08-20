@@ -186,8 +186,50 @@ public class KelurahanControllerV2 {
         return mv;
     }
 
+    @RequestMapping("/add/v2")
+    private ModelAndView addv2() {
+        ModelAndView mav = new ModelAndView("kelurahan2/addv2");
+        Kelurahan kelurahan = new Kelurahan();
+
+        List<Dusun> dusunList = new ArrayList<>();
+
+        ArrayList<Warga> wargaList = new ArrayList<>();
+        wargaList.add(new Warga(0,0,"","",0));
+
+        ArrayList<RT> rtList = new ArrayList<>();
+        rtList.add(new RT(0,"","", wargaList));
+
+        ArrayList<RW> rwList = new ArrayList<>();
+        rwList.add(new RW(0,"","", rtList));
+
+        Dusun dusun = new Dusun(0,"", kelurahan, rwList);
+        dusunList.add(dusun);
+
+        kelurahan.setDaftarDusun2(dusunList);
+
+        mav.addObject("kelurahan", kelurahan);
+
+        return mav;
+    }
+
     @PostMapping("/save")
     private ModelAndView save (@ModelAttribute Kelurahan kelurahan) {
-        
+        kelurahanList.add(kelurahan);
+
+        return new ModelAndView("redirect:/kelurahan2");
+
+    }
+
+    @GetMapping("/edit/{id}")
+    private ModelAndView edit(@PathVariable("id") Integer id) {
+        ModelAndView mv = new ModelAndView("kelurahan2/edit");
+
+        Optional<Kelurahan> kelurahanOpsi = kelurahanList.stream().filter(x -> x.getId().equals(id)).findFirst();
+        if (kelurahanOpsi.isPresent()) {
+            mv.addObject("kelurahan", kelurahanOpsi.get());
+            return mv;
+        } else {
+            return new ModelAndView("redirect:/kelurahan2");
+        }
     }
 }

@@ -23,15 +23,15 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label for="id" class="form-label">ID</label>
-                    <input type="text" class="form-control" id="id" th:value="${kelurahan.id}">
+                    <input type="text" class="form-control" id="id" name="id" th:value="${kelurahan.id}">
                 </div>
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" id="nama" th:value="${kelurahan.nama}">
+                    <input type="text" class="form-control" id="nama" name="nama" th:value="${kelurahan.nama}">
                 </div>
                 <div class="mb-3">
                     <label for="kecamatan" class="form-label">Kecamatan</label>
-                    <input type="text" class="form-control" id="kecamatan" th:value="${kelurahan.kecamatan}">
+                    <input type="text" class="form-control" id="kecamatan" name="kecamatan" th:value="${kelurahan.kecamatan}">
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label th:for="|id_${dusIter.index}_name|" class="form-label">Nama Dusun</label>
-                    <input type="text" class="form-control" th:id="|${dusIter.index}_name|" th:name="|daftarDusun2[${dusIter.index}].name|">
+                    <input type="text" class="form-control" th:id="|id_${dusIter.index}_name|" th:name="|daftarDusun2[${dusIter.index}].name|">
                 </div>
             </div>
             <h3>RW</h3>
@@ -50,11 +50,11 @@
                 <div class="col-12">
                     <div class="mb-3">
                         <label th:for="|id_${rwIter.index}_name|" class="form-label">RW</label>
-                        <input type="text" class="form-control" th:id="|id_${rwIter.index}_name|" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].name|">
+                        <input type="text" class="form-control" th:id="|id_${rwIter.index}_name|" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].name|">
                     </div>
                     <div class="mb-3">
                         <label th:for="|id_${rwIter.index}_nameRW|" class="form-label">Nama RW</label>
-                        <input type="text" class="form-control" th:id="|id_${rwIter.index}_nameRW|" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].nameRW|">
+                        <input type="text" class="form-control" th:id="|id_${rwIter.index}_nameRW|" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].nameRW|">
                     </div>
                 </div>
                 <h3>RT</h3>
@@ -63,11 +63,11 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label th:for="|id_${rwIter.index}_name|" class="form-label">RT</label>
-                            <input type="text" class="form-control" th:id="|id_${rwIter.index}_name|" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].name|">
+                            <input type="text" class="form-control" th:id="|id_${rwIter.index}_name|" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].name|">
                         </div>
                         <div class="mb-3">
-                            <label th:for="|id_${rwIter.index}_nameRT|" class="form-label">Nama RT</label>
-                            <input type="text" class="form-control" th:id="|id${rwIter.index}_nameRT|" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].nameRT|">
+                            <label th:for="|id_${rwIter.index}_nameRt|" class="form-label">Nama RT</label>
+                            <input type="text" class="form-control" th:id="|id${rwIter.index}_nameRt|" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].nameRt|">
                         </div>
                     </div>
                     <h3>Warga</h3>
@@ -89,20 +89,20 @@
                                         <tr th:each="warga, wargaIter : ${rt.daftarWarga2}">
                                             <th scope="row" th:text="${wargaIter.index + 1}">1</th>
                                             <td>
-                                                <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${wargaIter.index}].nik|">
+                                                <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].daftarWarga2[${wargaIter.index}].nik|">
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].daftarRt[${rtIter.index}].daftarWarga[${wargaIter.index}].namaWarga|">
+                                                <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].daftarWarga2[${wargaIter.index}].namaWarga|">
                                             </td>
                                             <td>
-                                                <select class="form-select" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${wargaIter.index}].jenisKelamin|">
-                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                <select class="form-select" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].daftarWarga2[${wargaIter.index}].jenisKelamin|">
+                                                    <option value="">Tidak Ingin Menjawab</option>
                                                     <option value="pria">Pria</option>
                                                     <option value="wanita">Wanita</option>
                                                 </select>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW[${rwIter.index}].daftarRT[${rtIter.index}].daftarWarga[${wargaIter.index}].age|">
+                                                <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].daftarWarga2[${wargaIter.index}].age|">
                                             </td>
                                         </tr>
                                         </tbody>

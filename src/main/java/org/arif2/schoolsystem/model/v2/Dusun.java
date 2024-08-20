@@ -21,4 +21,10 @@ public class Dusun {
         this.name = name;
         this.kelurahan = kelurahan;
     }
+
+    public Dusun(Integer id, String name, List<RW> daftarRW2) {
+        this.id = id;
+        this.name = name;
+        this.daftarRW2 = daftarRW2;
+    }
 }
