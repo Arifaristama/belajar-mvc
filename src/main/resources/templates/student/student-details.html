@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/main}">
 <head>
     <meta charset="UTF-8">
     <title>Details</title>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <body>
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
-<div class="container-fluid">
+<div class="container-fluid" layout:fragment="content">
     <h1>Student Detail</h1>
 
     <form>
@@ -23,15 +14,15 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label for="id" class="form-label">Id</label>
-                    <input type="text" class="form-control" id="id" th:value="${student.id}" readonly>
+                    <input type="text" class="form-control bg-dark" id="id" th:value="${student.id}" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="firstName" class="form-label">Nis</label>
-                    <input type="text" class="form-control" id="firstName" th:value="${student.nis}" readonly>
+                    <input type="text" class="form-control bg-dark" id="firstName" th:value="${student.nis}" disabled>
                 </div>
                 <div class="mb-3">
                     <label for="lastName" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="lastName" th:value="${student.nama}" readonly>
+                    <input type="text" class="form-control bg-dark" id="lastName" th:value="${student.nama}" disabled>
                 </div>
             </div>
         </div>
@@ -47,7 +38,7 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">No</th>
                                 <th scope="col">Class Name</th>
                                 <th scope="col">Start Date</th>
                                 <th scope="col">End Date</th>
@@ -64,7 +55,6 @@
                             </tr>
                             </tbody>
                         </table>
-
                     </div>
                 </div>
             </div>
@@ -72,8 +62,5 @@
         <br/>
     </form>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 </body>
 </html>

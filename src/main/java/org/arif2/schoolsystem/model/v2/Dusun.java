@@ -6,25 +6,34 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Dusun {
-    private Integer id;
+    private String id;
     private String name;
     private Kelurahan kelurahan;
     private List<RW> daftarRW2 = new ArrayList<>();
 
-    public Dusun(Integer id, String name, Kelurahan kelurahan) {
+    public Dusun(String id, String name, Kelurahan kelurahan) {
         this.id = id;
         this.name = name;
         this.kelurahan = kelurahan;
     }
 
-    public Dusun(Integer id, String name, List<RW> daftarRW2) {
+    public Dusun(String id, String name, List<RW> daftarRW2) {
         this.id = id;
         this.name = name;
         this.daftarRW2 = daftarRW2;
+    }
+
+    public Dusun(String name, Kelurahan kelurahan) {
+        this.name = name;
+        this.kelurahan = kelurahan;
+    }
+
+    public Dusun() {
+        this.id = UUID.randomUUID().toString();
     }
 }

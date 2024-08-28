@@ -23,7 +23,7 @@ public class KelurahanControllerV2 {
         // kelurahanList.add(sukahurip);
 
         // Daftar Kelurahan
-        Kelurahan sukahurip = new Kelurahan(UUID.randomUUID().hashCode(), "Sukarhurip","Pamarican");
+        Kelurahan sukahurip = new Kelurahan(UUID.randomUUID().toString(), "Sukarhurip","Pamarican");
         kelurahanList.add(sukahurip);
 
 //        Kelurahan kertahayu = new Kelurahan(UUID.randomUUID().hashCode(),"Kertahayu", "Pamarican");
@@ -32,19 +32,19 @@ public class KelurahanControllerV2 {
 //        Kelurahan banjarsari = new Kelurahan(UUID.randomUUID().hashCode(),"Banjar Sari", "Pamarican");
 //        kelurahanList.add(banjarsari);
 
-        Dusun dusun1 = new Dusun(UUID.randomUUID().hashCode(), "Dusun 01",sukahurip);
+        Dusun dusun1 = new Dusun(UUID.randomUUID().toString(), "Dusun 01",sukahurip);
         List<RW> rwList = new ArrayList<>();
 
         //Menambahkan rw ke list
-        RW rw01 = new RW(UUID.randomUUID().hashCode(),"RW 01","Budiono",dusun1,sukahurip);
+        RW rw01 = new RW(UUID.randomUUID().toString(),"RW 01","Budiono",dusun1,sukahurip);
 
         //Inisiasi objek
         List<RT> rtList = new ArrayList<>();
-        RT rt01 = new RT(UUID.randomUUID().hashCode(),"RT 01","Dimas",rw01,dusun1,sukahurip);
+        RT rt01 = new RT(UUID.randomUUID().toString(),"RT 01","Dimas",rw01,dusun1,sukahurip);
 
         //Daftar warga
         List<Warga> wargaList = new ArrayList<>();
-        Warga warga01 = new Warga(UUID.randomUUID().hashCode(),1123,"Dimas","Laki-Laki", 20);
+        Warga warga01 = new Warga(UUID.randomUUID().toString(),1123,"Dimas","Laki-Laki", 20);
         wargaList.add(warga01);
 
 //        Warga warga02 = new Warga(UUID.randomUUID().hashCode(),1124,"Dika","Laki-Laki",20);
@@ -53,7 +53,7 @@ public class KelurahanControllerV2 {
         rt01.setDaftarWarga2(wargaList);
         rtList.add(rt01);
 
-        RT rt03 = new RT(UUID.randomUUID().hashCode(),"RT 03","Anton", rw01, dusun1,sukahurip);
+        RT rt03 = new RT(UUID.randomUUID().toString(),"RT 03","Anton", rw01, dusun1,sukahurip);
         rtList.add(rt03);
 
         //RW 01 Menambah daftar RT
@@ -61,7 +61,7 @@ public class KelurahanControllerV2 {
         //RW 01 Menambah ke daftar RW
         rwList.add(rw01);
 
-        RW rw02 = new RW(UUID.randomUUID().hashCode(),"RW 02", "Galih", dusun1, sukahurip);
+        RW rw02 = new RW(UUID.randomUUID().toString(),"RW 02", "Galih", dusun1, sukahurip);
         rwList.add(rw02);
 
 //        RW rw03 = new RW(UUID.randomUUID().hashCode(),"RW 03","Malik", dusun1, sukahurip);
@@ -90,7 +90,7 @@ public class KelurahanControllerV2 {
     }
 
     @GetMapping("/kelurahan2/detail/{id}")
-    private ModelAndView kelurahanDetail (@PathVariable("id") Integer id) {
+    private ModelAndView kelurahanDetail (@PathVariable("id") String id) {
         ModelAndView mv = new ModelAndView("kelurahan2/kelurahan-detail");
 
         Optional<Kelurahan> kelurahan = kelurahanList.stream().filter(x -> x.getId().equals(id)).findFirst();
@@ -103,8 +103,8 @@ public class KelurahanControllerV2 {
     }
 
     @GetMapping("/kelurahan2/detail/{kelurahanId}/dusun/{dusunId}")
-    public ModelAndView dusun(@PathVariable("kelurahanId") Integer kelurahanId,
-                              @PathVariable("dusunId") Integer dusunId){
+    public ModelAndView dusun(@PathVariable("kelurahanId") String kelurahanId,
+                              @PathVariable("dusunId") String dusunId){
         ModelAndView mav = new ModelAndView("kelurahan2/dusun-detail");
 
         Optional<Kelurahan> result = kelurahanList.stream().filter(x -> x.getId().equals(kelurahanId)).findFirst();
@@ -119,9 +119,9 @@ public class KelurahanControllerV2 {
     }
 
     @GetMapping("/kelurahan2/detail/{kelurahanId}/dusun/{dusunId}/rw/{rwId}")
-    private ModelAndView rwDetail (@PathVariable("kelurahanId") Integer id,
-                                   @PathVariable("dusunId") Integer dusunId,
-                                   @PathVariable("rwId") Integer rwId) {
+    private ModelAndView rwDetail (@PathVariable("kelurahanId") String id,
+                                   @PathVariable("dusunId") String dusunId,
+                                   @PathVariable("rwId") String rwId) {
         ModelAndView mv = new ModelAndView("kelurahan2/rw-detail");
 
         Optional<Kelurahan> kelurahan = kelurahanList.stream().filter(x -> x.getId().equals(id)).findFirst();
@@ -138,10 +138,10 @@ public class KelurahanControllerV2 {
     }
 
     @GetMapping("/kelurahan2/detail/{kelurahanId}/dusun/{dusunId}/rw/{rwId}/rt/{rtId}")
-    private ModelAndView rtDetail (@PathVariable("kelurahanId") Integer kelurahanId,
-                                   @PathVariable("dusunId") Integer dusunId,
-                                   @PathVariable("rwId") Integer rwId,
-                                   @PathVariable("rtId") Integer rtId) {
+    private ModelAndView rtDetail (@PathVariable("kelurahanId") String kelurahanId,
+                                   @PathVariable("dusunId") String dusunId,
+                                   @PathVariable("rwId") String rwId,
+                                   @PathVariable("rtId") String rtId) {
 
         ModelAndView mv = new ModelAndView("kelurahan2/rt-detail");
 
@@ -168,15 +168,15 @@ public class KelurahanControllerV2 {
         List<Dusun> dusunList = new ArrayList<>();
 
         ArrayList<Warga> wargaList = new ArrayList<>();
-        wargaList.add(new Warga(0,0,"","",0));
+        wargaList.add(new Warga("",0,"","",0));
 
         ArrayList<RT> rtList = new ArrayList<>();
-        rtList.add(new RT(0,"","", wargaList));
+        rtList.add(new RT("","","", wargaList));
 
         ArrayList<RW> rwList = new ArrayList<>();
-        rwList.add(new RW(0,"","", rtList));
+        rwList.add(new RW("","","", rtList));
 
-        Dusun dusun = new Dusun(0,"", kelurahan, rwList);
+        Dusun dusun = new Dusun("","", kelurahan, rwList);
         dusunList.add(dusun);
 
         kelurahan.setDaftarDusun2(dusunList);
@@ -194,15 +194,15 @@ public class KelurahanControllerV2 {
         List<Dusun> dusunList = new ArrayList<>();
 
         ArrayList<Warga> wargaList = new ArrayList<>();
-        wargaList.add(new Warga(0,0,"","",0));
+        wargaList.add(new Warga("",0,"","",0));
 
         ArrayList<RT> rtList = new ArrayList<>();
-        rtList.add(new RT(0,"","", wargaList));
+        rtList.add(new RT("","","", wargaList));
 
         ArrayList<RW> rwList = new ArrayList<>();
-        rwList.add(new RW(0,"","", rtList));
+        rwList.add(new RW("","","", rtList));
 
-        Dusun dusun = new Dusun(0,"", kelurahan, rwList);
+        Dusun dusun = new Dusun("","", kelurahan, rwList);
         dusunList.add(dusun);
 
         kelurahan.setDaftarDusun2(dusunList);

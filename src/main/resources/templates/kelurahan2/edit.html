@@ -33,7 +33,6 @@
         </div>
         <h3>Dusun</h3>
         <div class="row" th:each="dusun, dusIter : ${kelurahan.daftarDusun2}">
-            <input type="hidden" th:name="|daftarDusun2[${dusIter.index}].id|" th:value="${dusIter.index + 5}">
             <div class="col-12">
                 <div class="mb-3">
                     <label th:for="|id_${dusIter.index}_name|" class="form-label">Nama Dusun</label>
@@ -42,7 +41,6 @@
             </div>
             <h3>RW</h3>
             <div class="row" th:each="rw, rwIter : ${dusun.daftarRW2}">
-                <input type="hidden" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}]id|" th:value="${rwIter.index + 5}">
                 <div class="col-12">
                     <div class="mb-3">
                         <label th:for="|id_${rwIter.index}_name|" class="form-label">RW</label>
@@ -55,7 +53,6 @@
                 </div>
                 <h3>RT</h3>
                 <div class="row" th:each="rt, rtIter : ${rw.daftarRT2}">
-                    <input type="hidden" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].id|" th:value="${rtIter.index + 5}">
                     <div class="col-12">
                         <div class="mb-3">
                             <label th:for="|id_${rwIter.index}_name|" class="form-label">Nama</label>
@@ -82,7 +79,17 @@
                                             </thead>
                                             <tbody>
                                             <tr th:each="warga, warIter : ${rt.daftarWarga2}">
-                                                <th scope="row" th:text=""
+                                                <td>
+                                                    <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].daftarWarg2[${warIter.index}].nik|">
+                                                </td>
+                                                <td>
+                                                    <input type="text" class="form-control" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].daftarWarg2[${warIter.index}].namaWarga|">
+                                                </td>
+                                                <td>
+                                                    <select class="form-select" th:name="|daftarDusun2[${dusIter.index}].daftarRW2[${rwIter.index}].daftarRT2[${rtIter.index}].daftarWarg2[${warIter.index}].jenisKelamin|">
+                                                        <option value="" selected disabled >Pilih Jenis Kelamin</option>
+                                                    </select>
+                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>

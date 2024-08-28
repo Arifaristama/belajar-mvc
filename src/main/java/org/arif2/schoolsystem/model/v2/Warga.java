@@ -7,13 +7,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class Warga {
-    private Integer id;
+    private String id;
     private Integer nik;
     private String namaWarga;
     private String jenisKelamin;
     private Integer age;
 
-    public Warga(Integer id, Integer nik, String namaWarga, String jenisKelamin, Integer age) {
+    public Warga(String id, Integer nik, String namaWarga, String jenisKelamin, Integer age) {
         this.id = id;
         this.nik = nik;
         this.namaWarga = namaWarga;

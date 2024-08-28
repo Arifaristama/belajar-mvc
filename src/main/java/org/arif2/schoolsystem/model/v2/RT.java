@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class RT {
-    private Integer id;
+    private String  id;
     private String name;
     private String nameRt;
     private RW rw;
@@ -19,7 +19,7 @@ public class RT {
     private Kelurahan kelurahan;
     List<Warga> daftarWarga2 = new ArrayList<>();
 
-    public RT(Integer id, String name, String nameRt, RW rw, Dusun dusun, Kelurahan kelurahan) {
+    public RT(String id, String name, String nameRt, RW rw, Dusun dusun, Kelurahan kelurahan) {
         this.id = id;
         this.name = name;
         this.nameRt = nameRt;
@@ -28,10 +28,20 @@ public class RT {
         this.kelurahan = kelurahan;
     }
 
-    public RT(Integer id, String name, String nameRt, List<Warga> daftarWarga2) {
+    public RT(String id, String name, String nameRt, List<Warga> daftarWarga2) {
         this.id = id;
         this.name = name;
         this.nameRt = nameRt;
         this.daftarWarga2 = daftarWarga2;
+    }
+
+    public RT() {
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public RT(String name, String nameRt) {
+        this.name = name;
+        this.nameRt = nameRt;
+
     }
 }
